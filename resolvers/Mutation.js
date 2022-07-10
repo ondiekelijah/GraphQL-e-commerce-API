@@ -72,5 +72,15 @@ exports.Mutation = {
     if (reviewIndex === -1) return false;
     db.reviews = db.reviews.filter((review) => review.id !== id);
     return true;
+  },
+    // Update methods
+    updateCategory: (parent, { id, input }, { db }) => {
+    const categoryIndex = db.categories.findIndex((category) => category.id === id); // Find the index of the category in the database
+    if (categoryIndex === -1) return false; // If the category is not in the database, return false
+    db.categories[categoryIndex] = { // Update the category in the database
+      ...db.categories[categoryIndex],// Destructure the category from the database
+      ...input,// Update the category with the input
+    };
+    return db.categories[categoryIndex];// Return the updated category
   }
 };
