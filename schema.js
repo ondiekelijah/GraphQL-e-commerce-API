@@ -23,7 +23,7 @@ exports.typeDefs = gql`
     updateReview(id: ID!, input: updateReviewInput!): Review!
 
   }
-
+ # Default schemas
   type Product {
     id: ID!
     name: String!
@@ -48,10 +48,12 @@ exports.typeDefs = gql`
     comment: String!
     rating: Int!
   }
+  # Filter schema
   input ProductFilterInput {
     onSale: Boolean
     avgRating: Int
   }
+  # Add schemas
   input addCategoryInput {
     name: String!
   }
@@ -71,6 +73,7 @@ exports.typeDefs = gql`
     comment: String!
     rating: Int!
   }
+  # Update schemas
   input updateCategoryInput {
     name: String!
   }
@@ -81,12 +84,14 @@ exports.typeDefs = gql`
     price: Float!
     image: String!
     onSale: Boolean!
-    categoryId: ID!
+    categoryId: ID
   }
   input updateReviewInput {
     date: String!
     title: String!
     comment: String!
     rating: Int!
+    productId: ID!
+
   }
 `;
