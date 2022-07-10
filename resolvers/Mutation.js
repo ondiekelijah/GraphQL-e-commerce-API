@@ -61,13 +61,16 @@ exports.Mutation = {
     return true;
   },
     deleteProduct: (parent, { id }, { db }) => {
-    // Check if id is in the database, if not return false and do not delete
     const productIndex = db.products.findIndex((product) => product.id === id);
     if (productIndex === -1) return false;
-    // Delete the product if it is in the database
     db.products = db.products.filter((product) => product.id !== id);
-    // Cascade delete the reviews associated with the product
     db.reviews = db.reviews.filter((review) => review.productId !== id);
+    return true;
+  },
+    deleteReview: (parent, { id }, { db }) => {
+    const reviewIndex = db.reviews.findIndex((review) => review.id === id);
+    if (reviewIndex === -1) return false;
+    db.reviews = db.reviews.filter((review) => review.id !== id);
     return true;
   }
 };
