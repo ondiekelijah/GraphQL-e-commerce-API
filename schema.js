@@ -79,12 +79,6 @@ exports.typeDefs = gql`
   }
   input updateProductInput {
     name: String!
-    description: String!
-    quantity: Int!
-    price: Float!
-    image: String!
-    onSale: Boolean!
-    categoryId: ID
   }
   input updateReviewInput {
     date: String!
